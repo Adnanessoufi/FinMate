@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os'
 import { join, resolve, dirname } from 'node:path'
 import { initialState, Store, verifyAudit } from '../backend/store.mjs'
 import { tuitionMission, prepareMission } from '../backend/mission.mjs'
-import { setStartingBalances, recordDeposit } from '../backend/accounts.mjs'
+import { setStartingBalances } from '../backend/accounts.mjs'
 import {
   parseReferenceXML,
   referenceStatus,

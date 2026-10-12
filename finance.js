@@ -1,6 +1,4 @@
-export const RATES = Object.freeze({ EUR: 1, GBP: 1.17, CNY: 0.128 })
-
-export const FEES = Object.freeze({ FinMate: 0.006, 'Bank transfer': 0.022, 'Card payment': 0.032 })
+const currencies = ['EUR', 'GBP', 'CNY']
 
 export const money = (amount, currency = 'EUR', digits = 2) =>
   new Intl.NumberFormat('en-IE', {
@@ -9,41 +7,6 @@ export const money = (amount, currency = 'EUR', digits = 2) =>
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   }).format(amount)
-
-export const totalEUR = balances =>
-  Object.entries(balances).reduce(
-    (total, [currency, amount]) => total + amount * RATES[currency],
-    0
-  )
-
-export function quote(amount, from, to, provider = 'FinMate') {
-  if (!Number.isFinite(amount) || amount < 0.01 || amount > 1000000)
-    throw new Error('Enter an amount between 0.01 and 1,000,000.')
-  if (!Object.hasOwn(RATES, from) || !Object.hasOwn(RATES, to) || !Object.hasOwn(FEES, provider))
-    throw new Error('Choose a supported currency and route.')
-  if (from === to) throw new Error('Choose two different currencies.')
-  const fee = Math.round(amount * FEES[provider] * 100) / 100
-  return {
-    amount,
-    from,
-    to,
-    provider,
-    fee,
-    received: Math.round((((amount - fee) * RATES[from]) / RATES[to]) * 100) / 100,
-    rate: RATES[from] / RATES[to],
-  }
-}
-
-export function applyTransfer(balances, transfer) {
-  const checked = quote(transfer.amount, transfer.from, transfer.to, transfer.provider)
-  if (!Number.isFinite(balances[checked.from]) || balances[checked.from] < checked.amount)
-    throw new Error('Your source account does not have enough funds.')
-  return {
-    ...balances,
-    [checked.from]: Math.round((balances[checked.from] - checked.amount) * 100) / 100,
-    [checked.to]: Math.round(((balances[checked.to] || 0) + checked.received) * 100) / 100,
-  }
-}
 
 export function parseCSV(text) {
   const rows = []
@@ -88,7 +51,7 @@ export function parseCSV(text) {
       !entry.description ||
       entry.amount === '' ||
       !Number.isFinite(amount) ||
-      !Object.hasOwn(RATES, entry.currency.toUpperCase())
+      !currencies.includes(entry.currency.toUpperCase())
     )
       throw new Error(
         `Row ${index + 2}: check the date, description, amount, and currency (EUR, GBP or CNY).`

@@ -5,15 +5,10 @@ import zipfile
 import hashlib
 
 root = Path(__file__).resolve().parent.parent
-root_files = ['.gitattributes', '.gitignore', '.env.example', 'README.md', 'package.json', 'package-lock.json', 'THIRD_PARTY_NOTICES.md', 'index.html', 'app.js', 'styles.css', 'finance.js', 'server.mjs', 'favicon.svg', 'sample-statement.csv']
-folders = ['backend', 'tests', 'tools', 'samples', 'docs']
-allowed_suffixes = {'.js', '.mjs', '.py', '.md', '.json', '.txt', '.csv', '.pdf', '.svg'}
-excluded = {'tools/serve-review.mjs', 'docs/demo-video.md', 'docs/agent-benchmark-before-grounding.json', 'docs/live-model-provider-failure.json', 'docs/benchmark-human-review.md'}
-files = [root / name for name in root_files]
-for folder in folders:
-    files.extend(path for path in (root / folder).rglob('*') if path.is_file() and path.suffix in allowed_suffixes and '__pycache__' not in path.parts and path.relative_to(root).as_posix() not in excluded)
-files.append(root / 'screenshots/home.jpg')
-files = sorted(set(files))
+import subprocess
+
+names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=root).decode().split('\0')
+files = sorted(root / name for name in names if name and (root / name).is_file() and not name.startswith('pitch/'))
 for path in files:
     if not path.is_file() or not path.resolve().is_relative_to(root):
         raise RuntimeError('Source manifest contains a missing or external file.')

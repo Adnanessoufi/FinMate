@@ -2,9 +2,9 @@
 
 ## Automated tests
 
-`npm test` runs 129 tests. They cover financial calculations, invoice checks, protected balances, quote expiry, payment approval, duplicate execution, imports, session isolation, PIN handling, encrypted storage and the agent tools.
+`npm test` runs 125 tests. They cover financial calculations, invoice checks, protected balances, quote expiry, payment approval, duplicate execution, imports, session isolation, PIN handling, encrypted storage and the agent tools.
 
-The suite passed in the workspace and in a clean copy on 12 October 2026. Tests use fixed dates where the expected result depends on the calendar.
+The suite passed in the workspace on 12 October 2026. Tests use fixed dates where the expected result depends on the calendar.
 
 ## Live agent checks
 
@@ -49,4 +49,4 @@ These are simulated quotes. This example shows why the cheapest route is not alw
 
 The cases are written for this project and use synthetic accounts. Passing them is not a general accuracy or safety guarantee. Human review covered selected answers, not every sentence.
 
-The desktop flows were checked at 1280px and 1600px. There has not been a study with real students yet. The study plan is in `student-study.md`.
+The desktop flows were checked at 1280px and 1600px. Evaluation uses synthetic accounts; it does not include a real-student study.

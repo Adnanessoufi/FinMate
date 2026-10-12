@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs",
-    "test": "node --experimental-test-isolation=none --test tests/*.test.mjs",
-    "evaluate": "node --experimental-test-isolation=none --test tests/*.test.mjs"
+    "test": "node --experimental-test-isolation=none --test tests/*.test.mjs"
   },
   "dependencies": {
     "pdfjs-dist": "6.2.108"

@@ -72,12 +72,11 @@ Balances are entered by the student and are not verified by a bank. Expected inc
 
 Saved accounts are encrypted in `data/`. Keep the storage key if you want to keep using those accounts. This is a local hackathon prototype, not a banking service.
 
-## Competition files
+## Project files
 
 - [Pitch deck](pitch/FinMate.pptx)
 - [Architecture](docs/architecture.md)
 - [Security](docs/security.md)
 - [Evaluation](docs/evaluation.md)
-- [Submission checklist](docs/submission.md)
 
 Third-party credits and licenses are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
