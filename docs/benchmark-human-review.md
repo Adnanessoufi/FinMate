@@ -1,0 +1,11 @@
+# Human review of the expanded evaluation
+
+The first 72-run report passed every automated assertion, but manual review found that one Chinese EUR 180 purchase explanation claimed a projected EUR 1,855.56 balance was above the EUR 2,030 payment-time reserve. That comparison was wrong. A corrected-purchase answer also described a EUR 264.44 emergency-buffer breach imprecisely as an essentials-and-buffer breach. The assertions checked tool calculations and selected outcomes, not the full semantic content of every sentence. Therefore the first report is retained as agent-benchmark-before-grounding.json and must not be described as 100% answer accuracy.
+
+Fix: when the affordability tool returns a valid assessment, the response now renders its amounts, conservative limit, minimum projection, emergency buffer and distinct payment-time reserve directly from the calculation. English and Chinese templates distinguish the two constraints. The model still interprets the request and chooses tools, but does not author that numeric conclusion. Added regression checks cover both languages and require the language shown to match persisted conversation history.
+
+The revised benchmark is rerun from the same frozen dataset, with new sessions for every repeat. It remains a bounded local evaluation, not a general security guarantee or independently held-out dataset. Human review was focused on selected cases, not a complete bilingual expert review.
+
+A subsequent fourteen-case smoke run encountered provider unavailability in six cases, with HTTP 429 confirmed in a follow-up request. It recorded 8/14 passes and retains those failures in live-model-evaluation.json and live-model-provider-failure.json. The failure reason is provider availability, not an observed financial mutation. No assumption is made about whether the 429 reflects a rate limit or account quota. The separate 72-run final benchmark completed before this incident.
+
+The application now uses a clearly labeled deterministic fallback for provider availability or malformed-response failures. Evaluators explicitly disable that fallback so an offline result cannot count as a successful live-model run. The fallback does not bypass approval, credential checks, invoice review or protected funds. Its response and audit identify the availability failure.

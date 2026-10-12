@@ -1,0 +1,178 @@
+{
+  "generatedAt": "2026-10-11T17:39:20.757Z",
+  "syntheticDataOnly": true,
+  "simulation": true,
+  "auditIntegrity": true,
+  "beforeBalances": {
+    "EUR": 2840,
+    "GBP": 1200,
+    "CNY": 18600
+  },
+  "afterBalances": {
+    "EUR": 2840,
+    "GBP": 1200,
+    "CNY": 577.18
+  },
+  "invoice": {
+    "id": "d7b60b06-6411-4955-926c-1f6bd4ece26b",
+    "reference": "UVA-2026-JL-1101",
+    "recipient": "University of Amsterdam",
+    "account": "DEMO-UVA-EUR-001",
+    "amount": 2300,
+    "currency": "EUR",
+    "due": "2026-11-01",
+    "verified": true,
+    "paid": true
+  },
+  "audit": [
+    {
+      "id": "242b8e37-559c-4c35-b869-251f83770b25",
+      "timestamp": "2026-10-11T17:37:20.756Z",
+      "title": "Demo accounts connected",
+      "description": "Three simulated accounts created. No real bank connection.",
+      "details": {},
+      "previousHash": "GENESIS",
+      "hash": "8491b662ad1b56c5172e0aff24383e4e0bc489187f1abe392483d07dea86802d"
+    },
+    {
+      "id": "68f07942-d7e1-476c-887c-4e55c2d758b9",
+      "timestamp": "2026-10-11T17:37:20.756Z",
+      "title": "Payment PIN configured",
+      "description": "PIN stored as a salted scrypt hash. Earlier payment quotes require fresh review; pending approvals are revoked.",
+      "details": {},
+      "previousHash": "8491b662ad1b56c5172e0aff24383e4e0bc489187f1abe392483d07dea86802d",
+      "hash": "d791cce8bb3d08abd2b91e7d9b3a264dfe6263abeeb00144973bea7b8cc570e9"
+    },
+    {
+      "id": "e6d4d8e1-3b2d-46a8-9692-67f91a137e5e",
+      "timestamp": "2026-10-11T17:37:20.756Z",
+      "title": "Payment plan prepared",
+      "description": "Bank wire: 18022.82 CNY. Waiting for explicit approval.",
+      "details": {
+        "draftId": "41b5c71f-f343-4360-91fa-3907f620b28a",
+        "digest": "d8432415a33a8e6e88905e09767cac6f8ba2a488e52c45e7fcd5cb4cb6ec9841",
+        "expiresAt": "2026-10-11T17:39:20.756Z"
+      },
+      "previousHash": "d791cce8bb3d08abd2b91e7d9b3a264dfe6263abeeb00144973bea7b8cc570e9",
+      "hash": "e1325b15b61bbced89ef5cef965c7dd9899afffe65f3df462edb3217ff195d9d"
+    },
+    {
+      "id": "312663f8-d0ea-47b9-8692-4b2e8673325b",
+      "timestamp": "2026-10-11T17:39:20.757Z",
+      "title": "Action blocked",
+      "description": "This quote has expired. Refresh the plan and approve the new quote.",
+      "details": {
+        "code": "QUOTE_EXPIRED",
+        "draftId": "41b5c71f-f343-4360-91fa-3907f620b28a"
+      },
+      "previousHash": "e1325b15b61bbced89ef5cef965c7dd9899afffe65f3df462edb3217ff195d9d",
+      "hash": "9bb9f094cf9eb410a344299c4d073863ae7b7ac3b6dccfd6b66bc2e24dce158f"
+    },
+    {
+      "id": "36f50e14-d909-4115-b7f6-8dd77161e0b0",
+      "timestamp": "2026-10-11T17:39:20.757Z",
+      "title": "Payment plan prepared",
+      "description": "Bank wire: 18022.82 CNY. Waiting for explicit approval.",
+      "details": {
+        "draftId": "17f5bd48-4aab-40c6-9e5d-d8d53728c9dc",
+        "digest": "0757bf23de96ae0eb78f80226e321dad8d7223d6aebcbd9caea764bb3a88a690",
+        "expiresAt": "2026-10-11T17:41:20.757Z"
+      },
+      "previousHash": "9bb9f094cf9eb410a344299c4d073863ae7b7ac3b6dccfd6b66bc2e24dce158f",
+      "hash": "5825a4628ac74ffea7fc990a856025319a7393bb88d430c5bac6ce1bc05cf8e3"
+    },
+    {
+      "id": "e08845a9-abf5-4d4d-8108-3ef197375257",
+      "timestamp": "2026-10-11T17:39:20.757Z",
+      "title": "Action blocked",
+      "description": "The payment PIN is incorrect.",
+      "details": {
+        "code": "PIN_INVALID",
+        "draftId": "17f5bd48-4aab-40c6-9e5d-d8d53728c9dc"
+      },
+      "previousHash": "5825a4628ac74ffea7fc990a856025319a7393bb88d430c5bac6ce1bc05cf8e3",
+      "hash": "30ff288e4364061d2853efddb5e7d44c88fab1df3bdb467adef98c59dd8c264b"
+    },
+    {
+      "id": "a7fb06c8-9122-4713-b94a-235c9fcefbdc",
+      "timestamp": "2026-10-11T17:39:20.757Z",
+      "title": "Payment explicitly approved",
+      "description": "Approval is bound to the displayed recipient, amount, fee, rate and deadline.",
+      "details": {
+        "approvalId": "327e8e4b-dba1-4de8-a4a7-1b9811d42d8f",
+        "draftId": "17f5bd48-4aab-40c6-9e5d-d8d53728c9dc",
+        "digest": "0757bf23de96ae0eb78f80226e321dad8d7223d6aebcbd9caea764bb3a88a690"
+      },
+      "previousHash": "30ff288e4364061d2853efddb5e7d44c88fab1df3bdb467adef98c59dd8c264b",
+      "hash": "1de2d0d609846715c423205f9e59da1d1147df01733779912629d8445c3cc9a8"
+    },
+    {
+      "id": "b33002cb-edf1-4526-97a8-6ab4ebc11c0e",
+      "timestamp": "2026-10-11T17:39:20.757Z",
+      "title": "Tuition paid in sandbox",
+      "description": "Executed once after explicit, matching approval.",
+      "details": {
+        "draftId": "17f5bd48-4aab-40c6-9e5d-d8d53728c9dc",
+        "approvalId": "327e8e4b-dba1-4de8-a4a7-1b9811d42d8f",
+        "digest": "0757bf23de96ae0eb78f80226e321dad8d7223d6aebcbd9caea764bb3a88a690",
+        "quote": {
+          "sourceAmount": 18022.82,
+          "from": "CNY",
+          "to": "EUR",
+          "fee": 54.07,
+          "received": 2300,
+          "rate": 0.128,
+          "provider": "Bank wire",
+          "route": "bank",
+          "arrival": "2026-10-16",
+          "costEUR": 6.92,
+          "remainingEUR": 2840,
+          "protectedEUR": 2030,
+          "eligible": true,
+          "reasons": [],
+          "source": "Simulated provider quote",
+          "asOf": "2026-10-11T17:39:20.757Z"
+        },
+        "invoiceReference": "uva-2026-jl-1101",
+        "invoiceAccount": "demo-uva-eur-001",
+        "recipient": "University of Amsterdam"
+      },
+      "previousHash": "1de2d0d609846715c423205f9e59da1d1147df01733779912629d8445c3cc9a8",
+      "hash": "08db76cba20991dd97b94901b9e3d8ad514fd85c5e4c8a2f77752b60906c63b2"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "87c7470b-c8df-4ba3-8d4e-87c814a9bdbc",
+      "draftId": "17f5bd48-4aab-40c6-9e5d-d8d53728c9dc",
+      "approvalId": "327e8e4b-dba1-4de8-a4a7-1b9811d42d8f",
+      "auditId": "b33002cb-edf1-4526-97a8-6ab4ebc11c0e",
+      "auditHash": "08db76cba20991dd97b94901b9e3d8ad514fd85c5e4c8a2f77752b60906c63b2",
+      "executedAt": "2026-10-11T17:39:20.757Z",
+      "type": "tuition",
+      "quote": {
+        "sourceAmount": 18022.82,
+        "from": "CNY",
+        "to": "EUR",
+        "fee": 54.07,
+        "received": 2300,
+        "rate": 0.128,
+        "provider": "Bank wire",
+        "route": "bank",
+        "arrival": "2026-10-16",
+        "costEUR": 6.92,
+        "remainingEUR": 2840,
+        "protectedEUR": 2030,
+        "eligible": true,
+        "reasons": [],
+        "source": "Simulated provider quote",
+        "asOf": "2026-10-11T17:39:20.757Z"
+      },
+      "invoiceReference": "uva-2026-jl-1101",
+      "invoiceAccount": "demo-uva-eur-001",
+      "recipient": "University of Amsterdam",
+      "status": "completed",
+      "simulation": true
+    }
+  ]
+}

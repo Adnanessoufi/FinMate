@@ -1,0 +1,10 @@
+University of Amsterdam
+Tuition invoice
+Invoice reference: UVA-2026-JL-1101
+Recipient: University of Amsterdam
+Account: DEMO-UVA-EUR-001
+Currency: EUR
+Amount due: 2300.00
+Due date: 2026-11-01
+Student: Jamie Li
+This sample invoice is for the FinMate simulated account only.
