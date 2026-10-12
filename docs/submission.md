@@ -7,8 +7,8 @@ The current website marks English technical documentation, a presentation deck w
 ## Deliverables and status
 
 - Technical documentation: architecture.md, security.md and evaluation.md, ready.
-- Presentation: submission/FinMate-competition.pptx, editable English deck with speaking notes. Rehearse under 10 minutes and add your actual team details outside the existing product content if required by the registration template.
-- Demo: new continuous desktop recording plan and English narration are prepared in submission/. Capture needs user selection in the browser sharing picker, then a final edited and verified video. The earlier root MP4 files predate the updated app and are drafts.
+- Presentation: pitch/FinMate.pptx, English deck made from slide images with speaking notes. Rehearse under 10 minutes and add your actual team details outside the existing product content if required by the registration template.
+- Demo: the recording still needs to be updated. docs/demo.md has the walkthrough.
 - Source: FinMate-source.zip, safe environment template, lockfile, README, tests, samples and third-party notices. Credentials, vaults, local keys, node_modules and private build directories are excluded.
 - Security self-assessment: security.md includes permission tiers and known risks.
 - Execution evidence: sandbox-execution-evidence.json records rejected expired quote and incorrect PIN before one explicit approved payment. tools/export-sandbox-evidence.mjs reproduces it with synthetic data. agent-benchmark.json records live planning tests separately.

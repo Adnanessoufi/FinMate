@@ -69,14 +69,12 @@ Starting balance entry and simulated deposit recording are human-only HTTP actio
 
 Manual balance inputs and simulated deposits are not bank-verified evidence. Possession of the local session allows the owner to enter hypothetical numbers; this is not authentication of real funds. A real deployment must obtain trusted balances and incoming-funds evidence from authorized integrations. Imported statements and forecast income do not mint funds. Exports include simulated deposit receipts and their audit links, without internal fingerprints or credentials.
 
-## Competition update controls
+## Tuition workflow and reference data
 
 Workflow preparation requires a digest bound to the day, selected accounts, saved invoice, account balances, living budget, Guardian comparison and simulated rates. It rechecks current eligibility and consent before creating a payment draft. Approval and execution still use the existing PIN, exact-draft and idempotency checks. Read-only goal tools cannot approve, execute or mint funds.
 
 Reference feeds use one fixed HTTPS ECB endpoint and do not accept caller URLs. Fetches, bytes, currency fields and observation dates are bounded, with an offline fallback. Reference values never enter execution quotes. English and Chinese explanations preserve identifiers and amounts. Credential-looking Chinese disclosures are refused before a model call. Numeric purchase conclusions come from engine fields rather than free-form model arithmetic.
 
 Dependency review identified GHSA-hq66-cqwq-w95j / CVE-2026-16633 in pdfjs-dist 5.6.205. The app now pins patched 6.2.108, disables scripting/expression evaluation, and includes the lockfile and third-party notices. npm reported zero known vulnerabilities for the installed tree on 11 October 2026. This is a point-in-time package advisory check, not a security certification. Source: https://github.com/mozilla/pdf.js/security/advisories/GHSA-hq66-cqwq-w95j .
-
-The optional local recorder uses an isolated synthetic session. Uploading video chunks requires the matching local session and Origin, uses fixed server-generated filenames, and caps chunk and total size. It is a development utility, not a deployed recording service. Browser capture cannot start until a person selects a capture surface.
 
 Provider availability errors fall back to an explicitly labeled deterministic planner. Financial guard failures do not trigger fallback. Neither route can approve or execute, and the fallback is recorded in the audit. Live evaluation scripts disable fallback so its answers cannot be counted as model successes.

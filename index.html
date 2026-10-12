@@ -1,43 +1,115 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f6f4ee">
-  <meta name="description" content="Your money, at home anywhere. A FinMate prototype for international students.">
-  <title>FinMate — At home, anywhere.</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script type="module" src="/app.js"></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to your money</a>
-  <header class="topbar">
-    <a class="brand" href="#overview" aria-label="FinMate home"><span class="brand-mark" aria-hidden="true">✳</span>finmate<span class="brand-dot">.</span></a>
-    <nav class="navigation" aria-label="Main navigation">
-      <button class="nav-link active" data-view="overview" aria-current="page">Home</button>
-      <button class="nav-link" data-view="tuition">Tuition</button>
-      <button class="nav-link" data-view="plan">Money plan</button>
-      <button class="nav-link" data-view="transfers">Convert</button>
-      <button class="nav-link" data-view="activity">Activity</button>
-    </nav>
-    <div class="header-end"><span class="demo-badge"><span class="status-dot"></span>Planning sandbox</span><button class="assistant-toggle" data-action="assistant" aria-haspopup="dialog"><span aria-hidden="true">✳</span> Ask FinMate</button><button class="avatar" id="profile-button" aria-label="View profile and settings">JL</button></div>
-  </header>
-  <div class="workspace">
-    <main id="main" tabindex="-1"><p class="empty-state">Getting your money together…</p></main>
-  </div>
-  <dialog id="assistant-dialog" aria-labelledby="assistant-title">
-    <aside class="agent-panel" aria-label="FinMate assistant">
-      <div class="agent-top"><span class="small-label"><span class="agent-star">✳</span> YOUR FINMATE</span><button class="assistant-close" data-action="close-assistant" aria-label="Close assistant">×</button></div>
-      <div class="assistant-language"><label for="assistant-language">Explanation language / 解释语言</label><select id="assistant-language"><option value="en">English</option><option value="zh">简体中文</option></select></div><div class="agent-intro"><h2 id="assistant-title">A little help,<br>when you need it.</h2><p>Ask about tuition, a purchase, or your next step. I’ll explain the numbers and prepare plans for you to review.</p></div>
-      <div id="conversation" class="conversation" role="log" aria-live="polite" aria-label="Assistant conversation"><div class="agent-message" id="initial-message"><span class="message-label">FINMATE · TODAY</span><p>Start with a question below, or tell me what you want to work out.</p><button class="agent-action" data-action="tuition">Let’s look at tuition <span>↗</span></button></div></div>
-      <div class="agent-bottom"><div class="suggestions"><button data-prompt="Plan my semester and tell me my next decision">What should I do next?</button><button data-prompt="Can I afford a EUR 180 weekend trip?">Can I afford a €180 trip?</button><button data-prompt="Plan my tuition using CNY">Help me plan tuition</button></div><form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input">Ask FinMate</label><input id="chat-input" placeholder="Ask a question about your money…" autocomplete="off" maxlength="2000" required><button type="submit" aria-label="Send message">↗</button></form><div class="agent-footnote"><span aria-hidden="true">↳</span>Payment PINs belong in the approval form.<span class="demo-agent"><span id="agent-mode">Connecting…</span></span></div></div>
-    </aside>
-  </dialog>
-  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
-  <div id="toast" role="status" aria-live="polite"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f4ee" />
+    <meta
+      name="description"
+      content="Your money, at home anywhere. A FinMate prototype for international students."
+    />
+    <title>FinMate — At home, anywhere.</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to your money</a>
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="FinMate home"
+        ><span class="brand-mark" aria-hidden="true">✳</span>finmate<span class="brand-dot"
+          >.</span
+        ></a
+      >
+      <nav class="navigation" aria-label="Main navigation">
+        <button class="nav-link active" data-view="overview" aria-current="page">Home</button>
+        <button class="nav-link" data-view="tuition">Tuition</button>
+        <button class="nav-link" data-view="plan">Money plan</button>
+        <button class="nav-link" data-view="transfers">Convert</button>
+        <button class="nav-link" data-view="activity">Activity</button>
+      </nav>
+      <div class="header-end"
+        ><span class="demo-badge"><span class="status-dot"></span>Planning sandbox</span
+        ><button class="assistant-toggle" data-action="assistant" aria-haspopup="dialog"
+          ><span aria-hidden="true">✳</span> Ask FinMate</button
+        ><button class="avatar" id="profile-button" aria-label="View profile and settings"
+          >JL</button
+        ></div
+      >
+    </header>
+    <div class="workspace">
+      <main id="main" tabindex="-1"><p class="empty-state">Getting your money together…</p></main>
+    </div>
+    <dialog id="assistant-dialog" aria-labelledby="assistant-title">
+      <aside class="agent-panel" aria-label="FinMate assistant">
+        <div class="agent-top"
+          ><span class="small-label"><span class="agent-star">✳</span> YOUR FINMATE</span
+          ><button
+            class="assistant-close"
+            data-action="close-assistant"
+            aria-label="Close assistant"
+            >×</button
+          ></div
+        >
+        <div class="assistant-language"
+          ><label for="assistant-language">Explanation language / 解释语言</label
+          ><select id="assistant-language"
+            ><option value="en">English</option
+            ><option value="zh">简体中文</option></select
+          ></div
+        ><div class="agent-intro"
+          ><h2 id="assistant-title">A little help,<br />when you need it.</h2
+          ><p
+            >Ask about tuition, a purchase, or your next step. I’ll explain the numbers and prepare
+            plans for you to review.</p
+          ></div
+        >
+        <div
+          id="conversation"
+          class="conversation"
+          role="log"
+          aria-live="polite"
+          aria-label="Assistant conversation"
+          ><div class="agent-message" id="initial-message"
+            ><span class="message-label">FINMATE · TODAY</span
+            ><p>Start with a question below, or tell me what you want to work out.</p
+            ><button class="agent-action" data-action="tuition"
+              >Let’s look at tuition <span>↗</span></button
+            ></div
+          ></div
+        >
+        <div class="agent-bottom"
+          ><div class="suggestions"
+            ><button data-prompt="Plan my semester and tell me my next decision"
+              >What should I do next?</button
+            ><button data-prompt="Can I afford a EUR 180 weekend trip?"
+              >Can I afford a €180 trip?</button
+            ><button data-prompt="Plan my tuition using CNY">Help me plan tuition</button></div
+          ><form id="chat-form" class="chat-form"
+            ><label class="sr-only" for="chat-input">Ask FinMate</label
+            ><input
+              id="chat-input"
+              placeholder="Ask a question about your money…"
+              autocomplete="off"
+              maxlength="2000"
+              required
+            /><button type="submit" aria-label="Send message">↗</button></form
+          ><div class="agent-footnote"
+            ><span aria-hidden="true">↳</span>Payment PINs belong in the approval form.<span
+              class="demo-agent"
+              ><span id="agent-mode">Connecting…</span></span
+            ></div
+          ></div
+        >
+      </aside>
+    </dialog>
+    <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
 </html>

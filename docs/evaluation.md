@@ -1,37 +1,52 @@
-# Evaluation report
+# Evaluation
 
-Measured on 11 October 2026. **129 automated tests passed, 0 failed** after the workflow, reference-data, bilingual grounding and PDF.js update. These are functional and security regressions for a local financial sandbox, not certification.
+## Automated tests
 
-## Deterministic coverage
+`npm test` runs 129 tests. They cover financial calculations, invoice checks, protected balances, quote expiry, payment approval, duplicate execution, imports, session isolation, PIN handling, encrypted storage and the agent tools.
 
-Financial fees and cent rounding, deadline eligibility, protected EUR living funds, explicitly selected backups, atomic combined payments, approval binding and quote expiry, idempotent and concurrent execution, invoice extraction and separate Guardian review, imported transaction duplicates, forecast and affordability uncertainty, profile migration, manual balances and simulated deposits, session isolation, Origin/CSRF checks, strict tool schemas, PIN failure cooldown, encrypted persistence and audit integrity. New workflow cases cover snapshot consent and changes to date, budget, rates, balances and invoice. Reference tests cover invalid/duplicate currency values, future dates, oversized feeds, entities, regressions, caching and offline fallback.
+The suite passed in the workspace and in a clean copy on 12 October 2026. Tests use fixed dates where the expected result depends on the calendar.
 
-## Actual live-agent evaluation
+## Live agent checks
 
-Model: gpt-5.6-terra. Frozen locally authored dataset: 24 synthetic scenario variants, repeated three times in fresh sessions. Final report: **72 of 72 runs passed their defined automated checks**. Completion: 27/27. Interaction: 21/21. Security: 24/24. Observed balance/approval violations: 0. All accounts, invoices and identifiers are synthetic. No real payment was attempted.
+On 11 October 2026, I ran 24 synthetic scenarios three times with `gpt-5.6-terra`.
 
-Median latency 4.101 seconds; 95th percentile 8.910 seconds. Measured model calls 204, input tokens 493118, output tokens 20216, tool calls 129. No dollar cost is estimated without verified provider pricing. Tool and token usage is reported separately from success.
+| Group | Passed |
+|---|---|
+| Task completion | 27 / 27 |
+| Interaction | 21 / 21 |
+| Security | 24 / 24 |
 
-Source report: agent-benchmark.json. Dataset: samples/agent-benchmark-cases.json. Reproduce: node tools/evaluate-benchmark.mjs. FINMATE_EVAL_REPEATS defaults to 3 and accepts 1–5. Failures are retained and produce a nonzero exit status. The old fourteen-case functional smoke report is separate.
+All 72 runs passed their defined checks. No balances changed and no payment approvals were created by chat. Median latency was 4.101 seconds and the 95th percentile was 8.910 seconds.
 
-## Human review and correction
+The cases are in `samples/agent-benchmark-cases.json`. The current results, tool calls and answers are in `agent-benchmark.json`.
 
-The first expanded run passed its assertions, yet human review found a Chinese explanation comparing a projected EUR 1,855.56 balance incorrectly with the EUR 2,030 payment-time reserve. A correction answer also described an emergency-buffer breach imprecisely. See benchmark-human-review.md and agent-benchmark-before-grounding.json. Affordability conclusions now render directly from engine fields, explaining the distinction between emergency buffer and payment-time reserve. The final report was rerun after this change. Passing assertions must not be described as 100% answer accuracy.
+```bash
+node tools/evaluate-benchmark.mjs
+```
 
-## Controlled baseline
+This makes real API calls. The evaluator disables the offline fallback and keeps failed cases in its report.
 
-For tuition due 12 October 2026, a fee-only baseline chooses Bank wire at EUR 6.92, arriving 16 October and missing the deadline. Applying FinMate's constraints selects Student transfer at EUR 13.88, arriving 12 October. This is one controlled synthetic counterexample, not evidence of universal fee savings or globally optimal currency allocation.
+## What the tests missed
 
-## Browser verification
+An earlier run passed the automated checks, but review found a misleading Chinese explanation. It compared a projected EUR 1,855.56 balance with the EUR 2,030 reserve protected at payment time. Those are different constraints.
 
-An isolated cookie and encrypted journal protect the user's original account. Checks include sample-balance blocking, entered balances, a CNY-only shortfall, explicitly permitted GBP rescue, a 14-day income-delay assumption, changed-plan explanations, exact payment review disabled without PIN, source-dated ECB data and a live grounded Chinese purchase answer. Desktop layout was inspected at 1280 and 1600 pixels. New student-study materials are prepared, but no real participant completion times, testimonials or usability scores have been collected.
+Purchase answers now use the calculation results directly in both languages. The explanation separates the 60-day emergency buffer from the reserve needed in the paying account. The 72-run evaluation was repeated after that change.
+
+A later 14-case smoke run had eight passes and six provider failures. A follow-up returned HTTP 429. These failures remain in `live-model-evaluation.json`. The app labels its offline fallback when the provider is unavailable.
+
+## Payment comparison
+
+For the example with tuition due on 12 October 2026:
+
+| Method | Route | Fee | Arrival |
+|---|---|---|---|
+| Lowest fee only | Bank wire | EUR 6.92 | 16 October, late |
+| Deadline and budget checks | Student transfer | EUR 13.88 | 12 October, on time |
+
+These are simulated quotes. This example shows why the cheapest route is not always usable. It does not prove savings for real transfers.
 
 ## Limits
 
-The dataset is locally authored and assertions are incomplete. Repeated runs measure consistency on these cases, not general accuracy, safety or real-world banking performance. Human review covered selected cases rather than a complete bilingual expert assessment. External transfer fees, delivery, holidays and settlement are simulated. The local prototype is single-process and requires production integrations and jurisdiction-specific review before real financial use.
+The cases are written for this project and use synthetic accounts. Passing them is not a general accuracy or safety guarantee. Human review covered selected answers, not every sentence.
 
-## Later availability check
-
-After the completed 72-run evaluation, the old fourteen-case smoke suite recorded 8/14 passes and six MODEL_UNAVAILABLE results. A follow-up confirmed HTTP 429. Its failures are retained, not counted as successful live responses. The app now offers a clearly labeled deterministic availability fallback, tested as a separate regression. Live evaluators disable fallback. This does not change or erase the previously measured benchmark.
-
-Clean-copy follow-up on 12 October: a fixed-date offline-agent test had used the wall clock for its tool calculations. The agent now accepts an internal observation clock for deterministic fixture tests, and those tests pass their intended date explicitly. Production calls still use the current time. Git attributes preserve PDF, PowerPoint and image bytes.
+The desktop flows were checked at 1280px and 1600px. There has not been a study with real students yet. The study plan is in `student-study.md`.

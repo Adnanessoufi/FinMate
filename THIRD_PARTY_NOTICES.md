@@ -1,6 +1,6 @@
 # Third-party notices
 
-FinMate application code and illustrations were created for this prototype. Synthetic names, invoices and financial records are original examples and are not real customer data. No bank or transfer-provider branding implies a partnership.
+The example names, invoices and financial records in FinMate are synthetic. No bank or transfer provider is connected.
 
 - PDF.js / pdfjs-dist 6.2.108, Mozilla and contributors, Apache License 2.0. Upstream: https://github.com/mozilla/pdf.js . License included at docs/licenses/pdfjs-Apache-2.0.txt. The pinned version replaces 5.6.205 after review of GHSA-hq66-cqwq-w95j (CVE-2026-16633). Invoice extraction disables scripting and expression evaluation. The npm lockfile records the installed dependency tree.
 - Optional @napi-rs/canvas dependency supplied through PDF.js, MIT license, upstream https://github.com/Brooooooklyn/canvas . Its dependency license is included at docs/licenses/canvas-MIT.txt. Platform packages and licenses are recorded in the lockfile and npm distribution.
@@ -9,4 +9,4 @@ FinMate application code and illustrations were created for this prototype. Synt
 - OpenAI or another configured compatible model API is an optional external service. Users must configure an authorized account and follow its terms. API credentials and local sessions are excluded from the archive.
 - ElevenLabs is used only for optional demo narration through the user's configured account. Voice is generated narration, not a student testimonial. Generated media is separate from application source and must be used under the account's applicable terms.
 
-PowerPoint authoring used the supplied Artifact Tool runtime. Screenshots show this original app with synthetic records. Presentation fonts are referenced, not redistributed. Third-party licences remain with their respective owners.
+Screenshots use synthetic account data. Third-party licenses remain with their owners.

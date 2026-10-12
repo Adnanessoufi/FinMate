@@ -1,4 +1,4 @@
-"""Package reviewable source and synthetic evidence, never local credentials or sessions."""
+"""Create the source ZIP."""
 from pathlib import Path
 import json
 import zipfile
@@ -8,16 +8,16 @@ root = Path(__file__).resolve().parent.parent
 root_files = ['.gitattributes', '.gitignore', '.env.example', 'README.md', 'package.json', 'package-lock.json', 'THIRD_PARTY_NOTICES.md', 'index.html', 'app.js', 'styles.css', 'finance.js', 'server.mjs', 'favicon.svg', 'sample-statement.csv']
 folders = ['backend', 'tests', 'tools', 'samples', 'docs']
 allowed_suffixes = {'.js', '.mjs', '.py', '.md', '.json', '.txt', '.csv', '.pdf', '.svg'}
+excluded = {'tools/serve-review.mjs', 'docs/demo-video.md', 'docs/agent-benchmark-before-grounding.json', 'docs/live-model-provider-failure.json', 'docs/benchmark-human-review.md'}
 files = [root / name for name in root_files]
 for folder in folders:
-    files.extend(path for path in (root / folder).rglob('*') if path.is_file() and path.suffix in allowed_suffixes and '__pycache__' not in path.parts)
-files.extend(root / 'demo-recording' / name for name in ['recorder.html', 'recorder.js'])
+    files.extend(path for path in (root / folder).rglob('*') if path.is_file() and path.suffix in allowed_suffixes and '__pycache__' not in path.parts and path.relative_to(root).as_posix() not in excluded)
+files.append(root / 'screenshots/home.jpg')
 files = sorted(set(files))
 for path in files:
     if not path.is_file() or not path.resolve().is_relative_to(root):
         raise RuntimeError('Source manifest contains a missing or external file.')
 
-# Never print credentials; ensure none of the configured secret values entered source.
 secrets = []
 environment = root / '.env'
 if environment.exists():
