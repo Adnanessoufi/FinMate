@@ -22,3 +22,10 @@ submission/demo-audio/
 !submission/assets/*.png
 demo-video/audio/
 demo-recording/take-*
+
+# Runtime journals and private recording work must never enter Git.
+data/
+demo-video/
+demo-recording/*
+!demo-recording/recorder.html
+!demo-recording/recorder.js
