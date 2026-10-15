@@ -2,28 +2,18 @@
 
 I made FinMate to help international students manage tuition, living costs and money from home.
 
-The student enters their balances, uploads an invoice and asks the agent to work out a plan. FinMate compares the payment options and keeps money aside for living costs. The student reviews the exact payment and confirms it with a PIN.
+The student enters their balances and uploads a tuition invoice. FinMate compares payment options and keeps money aside for living costs. The student reviews the payment and confirms it with a PIN.
 
-This version uses simulated accounts. It does not connect to a bank or move real money.
-
-![FinMate](screenshots/home.jpg)
+Accounts and payments are simulated. No real bank is connected.
 
 ## What it does
 
-- Track EUR, GBP and CNY balances
-- Read tuition invoices from PDF, TXT or pasted text
-- Compare payment fees and arrival dates
-- Combine selected accounts when one balance is not enough
-- Check whether a purchase fits the student's budget
-- Plan around rent, tuition and expected income
+- Manage EUR, GBP and CNY balances
+- Read PDF and TXT invoices
+- Compare fees and arrival dates, including funding from selected accounts
+- Check purchase affordability and upcoming expenses
 - Explain plans in English or Chinese
-- Record approvals and simulated payments in an audit trail
-
-## Technologies I used
-
-For the frontend, I used HTML, CSS and JavaScript.
-
-For the backend, I used Node.js and PDF.js. I used OpenAI for the financial agent and the ECB feed for reference exchange rates.
+- Save payment approvals, receipts and audit history
 
 ## Run it
 
@@ -31,24 +21,15 @@ You need Node.js 22.18 or newer.
 
 ```bash
 npm ci --ignore-scripts
-npm run dev
-```
-
-Then open http://127.0.0.1:5187.
-
-## API keys
-
-Copy the example file:
-
-```bash
 cp .env.example .env
+npm start
 ```
 
-On Windows, use `Copy-Item .env.example .env`.
+On PowerShell, use `Copy-Item .env.example .env` to copy the file.
 
-Add your OpenAI key inside `.env` and set `FINMATE_MODEL` to the model you want to use. The offline planner works without a key. It is also used when the model service is unavailable.
+Open http://127.0.0.1:5187.
 
-I do not keep real API keys or saved accounts inside GitHub. In live mode, chat messages and financial tool results are sent to the configured model provider. Invoice extraction stays local.
+Add your OpenAI key to `.env` and choose the model with `FINMATE_MODEL`. Restart the server after changing these settings. Without a key, the app uses its offline planner. It also labels offline responses when the provider is unavailable.
 
 ## Tests
 
@@ -56,27 +37,12 @@ I do not keep real API keys or saved accounts inside GitHub. In live mode, chat 
 npm test
 ```
 
-The live agent checks are separate and need an API key:
+## Built with
 
-```bash
-node tools/evaluate-benchmark.mjs
-```
+HTML, CSS, JavaScript and Node.js. PDF.js reads invoices, OpenAI handles the agent conversation, and the ECB feed provides reference exchange rates. Payment quotes use separate simulated rates.
 
-Results and limitations are in [docs/evaluation.md](docs/evaluation.md).
+The agent can read finances and prepare drafts. Approval requires the student's PIN. Starting balances are entered manually, and expected income is not available money until it arrives.
 
-## Important
+Saved accounts are encrypted in `data/`. Keep the storage key to retain access to them. API keys and saved accounts stay outside Git. Live chat sends messages and financial tool results to the configured model provider; invoice extraction stays local.
 
-The AI can read, compare and prepare a payment. It cannot approve a payment, enter the PIN or add money to an account.
-
-Balances are entered by the student and are not verified by a bank. Expected income is not available money until it arrives. Payment fees, rates and delivery estimates are simulated. ECB reference rates are shown separately for information.
-
-Saved accounts are encrypted in `data/`. Keep the storage key if you want to keep using those accounts. This is a local hackathon prototype, not a banking service.
-
-## Project files
-
-- [Pitch deck](pitch/FinMate.pptx)
-- [Architecture](docs/architecture.md)
-- [Security](docs/security.md)
-- [Evaluation](docs/evaluation.md)
-
-Third-party credits and licenses are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Third-party licenses are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

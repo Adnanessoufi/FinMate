@@ -8,4 +8,4 @@ The example names, invoices and financial records in FinMate are synthetic. No b
 - European Central Bank reference-rate data: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html . Reference observations are attributed and dated. They are informational, not executable transaction prices. See ECB reuse terms: https://www.ecb.europa.eu/services/disclaimer/html/index.en.html . ECB data does not imply endorsement.
 - OpenAI or another configured compatible model API is an optional external service. Users must configure an authorized account and follow its terms. API credentials and local sessions are excluded from the archive.
 
-Screenshots use synthetic account data. Third-party licenses remain with their owners.
+Third-party licenses remain with their owners.
