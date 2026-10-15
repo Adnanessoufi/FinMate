@@ -19,3 +19,6 @@ samples/agent-benchmark-cases.json
 FinMate-source.zip
 *.log
 .DS_Store
+*.png
+*.mp4
+*.webm
