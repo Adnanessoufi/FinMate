@@ -163,7 +163,7 @@ button:active {
 .demo-badge {
   display: flex;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   gap: 7px;
   white-space: nowrap;
 }
@@ -197,7 +197,7 @@ main {
   outline: none;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -330,7 +330,7 @@ main {
   gap: 8px;
 }
 .mini-label {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1;
   padding: 5px 7px;
   border: 1px solid #d5d0c8;
@@ -405,7 +405,7 @@ main {
 .currency-row strong small {
   color: var(--muted);
   font-weight: 400;
-  font-size: 9px;
+  font-size: 12px;
   margin-left: 7px;
 }
 .forecast-section {
@@ -488,7 +488,7 @@ main {
 }
 .chart .chart-note {
   fill: var(--ink);
-  font-size: 9px;
+  font-size: 12px;
 }
 .chart .note-bg {
   fill: var(--paper);
@@ -497,7 +497,7 @@ main {
   display: flex;
   gap: 7px;
   align-items: flex-start;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.5;
   margin-top: 7px;
@@ -584,7 +584,7 @@ main {
   font-weight: 500;
 }
 .transaction-meta {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -599,12 +599,12 @@ main {
 }
 .transaction-date {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
   min-width: 40px;
   text-align: right;
 }
 .page-footer {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
@@ -634,7 +634,7 @@ main {
   gap: 8px;
 }
 .small-label {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 1.3px;
   display: flex;
   align-items: center;
@@ -799,7 +799,7 @@ main {
   align-items: center;
   gap: 5px;
   margin-top: 11px;
-  font-size: 8px;
+  font-size: 12px;
   color: #c5afbd;
 }
 .demo-agent {
@@ -1003,7 +1003,7 @@ main {
 }
 .route-amount small {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 7px;
 }
@@ -1100,14 +1100,14 @@ main {
   margin: 0 0 7px;
 }
 .audit-row p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
   margin: 0;
 }
 .audit-row time {
   margin-left: auto;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -1545,7 +1545,7 @@ dialog::backdrop {
     font-size: 11px;
   }
   .demo-badge {
-    font-size: 9px;
+    font-size: 12px;
     gap: 5px;
   }
   .demo-badge .status-dot {
@@ -1660,7 +1660,7 @@ dialog::backdrop {
     font-size: 8px;
   }
   .forecast-note {
-    font-size: 9px;
+    font-size: 12px;
   }
   .tuition-strip {
     padding: 18px 16px;
@@ -1688,10 +1688,10 @@ dialog::backdrop {
     font-size: 11px;
   }
   .transaction-meta {
-    font-size: 9px;
+    font-size: 12px;
   }
   .page-footer {
-    font-size: 8px;
+    font-size: 12px;
   }
   .footer-tagline {
     font-size: 11px;
@@ -1739,7 +1739,7 @@ dialog::backdrop {
     font-size: 12px;
   }
   .agent-footnote {
-    font-size: 9px;
+    font-size: 12px;
   }
   .demo-agent {
     font-size: 9px;
@@ -1758,7 +1758,7 @@ dialog::backdrop {
     font-size: 25px;
   }
   .budget-summary .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0.6px;
   }
   .budget-summary .stat-caption {
@@ -1817,7 +1817,7 @@ dialog::backdrop {
     width: 180px;
   }
   .audit-row time {
-    font-size: 8px;
+    font-size: 12px;
   }
   .import-banner {
     align-items: flex-start;
@@ -2034,7 +2034,7 @@ dialog::backdrop {
 .assumptions,
 .audit-detail,
 .demo-details {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.8;
   margin: 22px 0;
@@ -2058,7 +2058,7 @@ dialog::backdrop {
   text-decoration: none;
 }
 .integrity-tag {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--green);
   margin-left: auto;
 }
@@ -2073,7 +2073,7 @@ dialog::backdrop {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   font-family: monospace;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.7;
 }
 .audit-row > div {
@@ -2083,7 +2083,7 @@ dialog::backdrop {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -2210,7 +2210,7 @@ textarea {
     gap: 10px;
   }
   .scenario-summary .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0.5px;
   }
   .scenario-summary strong {
@@ -2234,7 +2234,7 @@ textarea {
     max-width: 110px;
   }
   .quote-validity {
-    font-size: 8px;
+    font-size: 12px;
   }
   .demo-details button {
     font-size: 10px;
@@ -2386,7 +2386,7 @@ textarea {
   opacity: 0.65;
 }
 .funding-receipt small {
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--muted);
   line-height: 1.7;
@@ -2625,7 +2625,7 @@ textarea {
   fill: none;
 }
 .purchase-date-note {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -2988,7 +2988,7 @@ textarea {
     gap: 10px;
   }
   .semester-at-a-glance .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0.5px;
   }
   .semester-at-a-glance strong {
@@ -3023,7 +3023,7 @@ textarea {
     gap: 15px;
   }
   .semester-projection .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0.5px;
   }
   .semester-projection strong {
@@ -3147,7 +3147,7 @@ textarea {
   margin: 20px 0;
 }
 .invoice-comparison-note p {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -3309,7 +3309,7 @@ textarea {
 }
 .payment-pin-field small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.8;
   color: var(--muted);
   margin: 10px 0 0;
@@ -3397,7 +3397,7 @@ main {
   gap: 18px;
 }
 .demo-badge {
-  font-size: 10px;
+  font-size: 12px;
 }
 .assistant-toggle {
   display: flex;
@@ -3423,7 +3423,7 @@ main {
   margin-bottom: 18px;
 }
 .welcome-row .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
 }
 .text-button {
   min-height: 36px;
@@ -3464,7 +3464,7 @@ main {
   font-size: 18px;
 }
 .page-footer {
-  font-size: 10px;
+  font-size: 12px;
 }
 .home-intro {
   display: grid;
@@ -3502,7 +3502,7 @@ main {
   gap: 9px;
   align-items: center;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
   margin-top: 22px;
 }
@@ -3523,7 +3523,7 @@ main {
   margin: 8px 0 4px;
 }
 .home-total > small {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .home-currencies {
@@ -3753,7 +3753,7 @@ main {
 }
 .payment-steps small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 6px;
 }
@@ -3832,7 +3832,7 @@ main {
   font-size: 19px;
 }
 .route-amount small {
-  font-size: 10px;
+  font-size: 12px;
 }
 .route-rejection {
   font-size: 11px;
@@ -3915,13 +3915,13 @@ main {
   font-size: 13px;
 }
 .transaction-meta {
-  font-size: 11px;
+  font-size: 12px;
 }
 .transaction-amount {
   font-size: 14px;
 }
 .transaction-date {
-  font-size: 11px;
+  font-size: 12px;
 }
 .audit-row h3 {
   font-size: 14px;
@@ -3930,7 +3930,7 @@ main {
   font-size: 12px;
 }
 .audit-row time {
-  font-size: 11px;
+  font-size: 12px;
 }
 #assistant-dialog {
   position: fixed;
@@ -4015,7 +4015,7 @@ main {
   font-size: 13px;
 }
 #assistant-dialog .agent-footnote {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.6;
   gap: 5px;
   align-items: center;
@@ -4181,7 +4181,7 @@ textarea {
     gap: 9px;
   }
   .payment-steps small {
-    font-size: 9px;
+    font-size: 12px;
   }
   .view-heading {
     font-size: 51px;
@@ -4220,7 +4220,7 @@ textarea {
     margin-bottom: 18px;
   }
   .welcome-row .eyebrow:last-child {
-    font-size: 8px;
+    font-size: 12px;
   }
   .home-intro {
     display: block;
@@ -4249,7 +4249,7 @@ textarea {
     align-self: flex-start;
   }
   .practice-note {
-    font-size: 10px;
+    font-size: 13px;
     margin-top: 16px;
   }
   .home-money {
@@ -4369,7 +4369,7 @@ textarea {
     line-height: 1.5;
   }
   .payment-steps small {
-    font-size: 9px;
+    font-size: 12px;
     line-height: 1.6;
   }
   .payment-steps li > span {
@@ -4406,7 +4406,7 @@ textarea {
     font-size: 15px;
   }
   .route-amount small {
-    font-size: 9px;
+    font-size: 12px;
   }
   .route {
     padding: 19px 4px;
@@ -4487,7 +4487,7 @@ textarea {
     font-size: 16px;
   }
   #assistant-dialog .agent-footnote {
-    font-size: 9px;
+    font-size: 12px;
   }
   #toast {
     bottom: 75px;
@@ -4732,7 +4732,7 @@ textarea:focus {
 }
 .brief-head .eyebrow {
   color: #5d584c;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 1.5px;
 }
 .brief-seal {
@@ -4753,7 +4753,7 @@ textarea:focus {
   display: block;
 }
 .brief-destination small {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.7;
   display: block;
   margin-top: 5px;
@@ -4784,7 +4784,7 @@ textarea:focus {
   margin-top: 36px;
 }
 .brief-amount .eyebrow {
-  font-size: 9px;
+  font-size: 12px;
   color: #615c50;
   letter-spacing: 1.1px;
 }
@@ -4944,11 +4944,11 @@ textarea:focus {
   margin-top: 3px;
 }
 #modal .quote-validity {
-  font-size: 11px;
+  font-size: 12px;
 }
 #modal .security-limit,
 #modal .payment-pin-field small {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
 }
 #modal .security-ledger span {
@@ -4997,7 +4997,7 @@ textarea:focus {
   font-size: 14px;
 }
 #assistant-dialog .agent-footnote {
-  font-size: 10px;
+  font-size: 12px;
   flex-wrap: wrap;
 }
 #assistant-dialog .demo-agent {
@@ -5047,7 +5047,7 @@ textarea:focus {
     gap: 15px;
   }
   .demo-badge {
-    font-size: 10px;
+    font-size: 12px;
   }
   .assistant-toggle {
     background: var(--plum);
@@ -5078,7 +5078,7 @@ textarea:focus {
     font-size: 13px;
   }
   .welcome-row .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 1.1px;
   }
   .home-intro {
@@ -5107,7 +5107,7 @@ textarea:focus {
     padding: 15px 23px;
   }
   .practice-note {
-    font-size: 10px;
+    font-size: 13px;
     margin-top: 18px;
     color: var(--muted);
   }
@@ -5124,7 +5124,7 @@ textarea:focus {
   }
   .home-total .eyebrow {
     color: #d7c7cf;
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 1.1px;
   }
   .home-total > strong {
@@ -5135,7 +5135,7 @@ textarea:focus {
   }
   .home-total small {
     color: #d0bfc9;
-    font-size: 10px;
+    font-size: 12px;
   }
   .home-currencies {
     padding-left: 32px;
@@ -5370,7 +5370,7 @@ textarea:focus {
     font-size: 13px;
   }
   .payment-steps small {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.6;
     margin-top: 5px;
   }
@@ -5468,7 +5468,7 @@ textarea:focus {
     letter-spacing: -0.7px;
   }
   .route-amount small {
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0;
     margin-top: 5px;
   }
@@ -5708,7 +5708,7 @@ textarea:focus {
     gap: 26px;
   }
   .audit-tools .integrity-tag {
-    font-size: 11px;
+    font-size: 12px;
   }
   .tabs {
     gap: 30px;
@@ -5763,10 +5763,10 @@ textarea:focus {
     font-size: 12px;
   }
   .audit-detail {
-    font-size: 11px;
+    font-size: 12px;
   }
   .audit-detail pre {
-    font-size: 11px;
+    font-size: 12px;
     background: #eee9df;
     padding: 17px;
     border: 1px solid var(--line);
@@ -5815,7 +5815,7 @@ textarea:focus {
     border-top: 1px solid var(--line);
     padding-top: 23px;
     margin-top: 38px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .footer-tagline {
     font-size: 16px;
@@ -5995,7 +5995,7 @@ textarea:focus {
     letter-spacing: -0.4px;
   }
   .tuition-planner .section-head > .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 0.8px;
     text-align: right;
   }
@@ -6038,7 +6038,7 @@ textarea:focus {
 
 .projection-note {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   color: #9d5e4c;
   margin-top: 9px;
 }
@@ -6080,7 +6080,7 @@ textarea:focus {
     min-width: 270px;
   }
   .projection-note {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 
@@ -6143,7 +6143,7 @@ textarea:focus {
     letter-spacing: -0.3px;
   }
   .setup-context .setup-context-note {
-    font-size: 11px;
+    font-size: 12px;
     border-left: 2px solid #b69a80;
     padding-left: 13px;
     margin-top: 26px;
@@ -6424,7 +6424,7 @@ textarea:focus {
   align-items: center;
   border-top: 1px solid #ddd8cd;
   padding: 20px 0;
-  font-size: 11px;
+  font-size: 13px;
   color: #786b70;
   margin-top: 48px;
 }
@@ -6433,6 +6433,7 @@ textarea:focus {
 }
 .reference-strip small {
   flex-basis: 100%;
+  font-size: 12px;
 }
 .reference-status.stale {
   color: #986523;
