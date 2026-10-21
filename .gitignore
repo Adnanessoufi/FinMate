@@ -24,3 +24,6 @@ FinMate-source.zip
 *.png
 *.mp4
 *.webm
+
+.agents/
+skills-lock.json

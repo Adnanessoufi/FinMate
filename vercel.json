@@ -6,7 +6,7 @@
   "functions": {
     "api/index.mjs": {
       "maxDuration": 300,
-      "includeFiles": "{index.html,app.js,finance.js,styles.css,favicon.svg,sample-statement.csv,samples/**}"
+      "includeFiles": "{*.{html,js,css,svg,csv},samples/**,node_modules/pdfjs-dist/{package.json,legacy/build/*.mjs,standard_fonts/**,cmaps/**,wasm/**},node_modules/@napi-rs/**}"
     }
   },
   "rewrites": [

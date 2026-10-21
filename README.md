@@ -1,5 +1,7 @@
 # FinMate
 
+[Open FinMate](https://finmate-omega.vercel.app)
+
 I made FinMate to help international students manage tuition, living costs and money from home.
 
 The student enters their balances and uploads a tuition invoice. FinMate compares payment options and keeps money aside for living costs. The student reviews the payment and confirms it with a PIN.
