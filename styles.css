@@ -151,10 +151,6 @@ button:active {
   left: 0;
   right: 0;
 }
-.nav-arrow {
-  font-size: 15px;
-  margin-left: 3px;
-}
 .header-end {
   display: flex;
   align-items: center;
@@ -163,7 +159,6 @@ button:active {
 .demo-badge {
   display: flex;
   align-items: center;
-  font-size: 12px;
   gap: 7px;
   white-space: nowrap;
 }
@@ -221,32 +216,6 @@ main {
 }
 .greeting span {
   color: var(--muted);
-}
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
-  position: relative;
-  gap: 20px;
-}
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(52px, 5.05vw, 80px);
-  line-height: 1.04;
-  font-weight: 400;
-  letter-spacing: -2.8px;
-  margin: 0 0 15px;
-}
-.hero h1 em {
-  font-weight: 400;
-  color: #9a6559;
-}
-.hero p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
 }
 .travel-art {
   width: 182px;
@@ -317,18 +286,6 @@ main {
 .text-button:hover {
   color: #9a6559;
 }
-.text-button .arrow {
-  font-size: 17px;
-}
-.balances-section {
-  border-top: 1px solid var(--line);
-  padding-top: 23px;
-}
-.balance-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
 .mini-label {
   font-size: 12px;
   line-height: 1;
@@ -338,43 +295,6 @@ main {
   color: var(--muted);
   font-weight: 400;
   letter-spacing: 0.3px;
-}
-.balance-layout {
-  display: grid;
-  grid-template-columns: 1.07fr 1fr;
-  gap: 40px;
-  padding-bottom: 24px;
-}
-.total-balance {
-  font-size: 49px;
-  letter-spacing: -2.5px;
-  line-height: 1.2;
-  font-weight: 500;
-  margin-bottom: 10px;
-  white-space: nowrap;
-}
-.total-balance .cents {
-  font-size: 31px;
-  color: #a3969e;
-  letter-spacing: -1.4px;
-}
-.balance-caption {
-  font-size: 10px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.currency-ledger {
-  border-left: 1px solid var(--line);
-  padding-left: 28px;
-  margin-top: -4px;
-}
-.currency-row {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 8px 0;
 }
 .currency-icon {
   width: 26px;
@@ -391,22 +311,6 @@ main {
 }
 .currency-icon.cny {
   background: #f0e0cc;
-}
-.currency-name {
-  font-size: 11px;
-  color: var(--muted);
-}
-.currency-row strong {
-  margin-left: auto;
-  font-size: 13px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-.currency-row strong small {
-  color: var(--muted);
-  font-weight: 400;
-  font-size: 12px;
-  margin-left: 7px;
 }
 .forecast-section {
   border-top: 1px solid var(--line);
@@ -447,9 +351,6 @@ main {
   height: 2px;
   background: var(--plum);
 }
-.legend .forecast-key {
-  background: repeating-linear-gradient(to right, #af8071 0 4px, transparent 4px 7px);
-}
 .chart {
   width: 100%;
   height: 154px;
@@ -482,65 +383,6 @@ main {
 .chart .area {
   fill: #eae5dd;
 }
-.chart .tuition-line {
-  stroke: #c4b8b0;
-  stroke-dasharray: 3 5;
-}
-.chart .chart-note {
-  fill: var(--ink);
-  font-size: 12px;
-}
-.chart .note-bg {
-  fill: var(--paper);
-}
-.forecast-note {
-  display: flex;
-  gap: 7px;
-  align-items: flex-start;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.5;
-  margin-top: 7px;
-}
-.forecast-note b {
-  font-weight: 500;
-  color: var(--ink);
-}
-.tuition-strip {
-  background: var(--peach);
-  margin: 23px 0 26px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 21px 23px;
-  position: relative;
-}
-.tuition-icon {
-  width: 37px;
-  height: 37px;
-  flex: none;
-}
-.tuition-icon svg {
-  height: 100%;
-  width: 100%;
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 1.1;
-}
-.tuition-copy {
-  flex: 1;
-}
-.tuition-copy h3 {
-  font-size: 13px;
-  font-weight: 550;
-  margin: 0 0 5px;
-}
-.tuition-copy p {
-  font-size: 10px;
-  line-height: 1.5;
-  color: #887265;
-  margin: 0;
-}
 .dark-button {
   background: var(--plum);
   color: var(--paper);
@@ -555,9 +397,6 @@ main {
 }
 .dark-button:hover {
   background: #654255;
-}
-.dark-button .arrow {
-  font-size: 16px;
 }
 .recent-section .section-head {
   margin-bottom: 8px;
@@ -584,7 +423,6 @@ main {
   font-weight: 500;
 }
 .transaction-meta {
-  font-size: 12px;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -599,12 +437,10 @@ main {
 }
 .transaction-date {
   color: var(--muted);
-  font-size: 12px;
   min-width: 40px;
   text-align: right;
 }
 .page-footer {
-  font-size: 12px;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
@@ -644,46 +480,8 @@ main {
   color: var(--yellow);
   font-size: 19px;
 }
-.agent-status {
-  font-size: 9px;
-  color: #c7b9c2;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-.agent-status .status-dot {
-  background: var(--yellow);
-  width: 5px;
-  height: 5px;
-}
 .agent-intro {
   margin-top: 22px;
-}
-.agent-orbit {
-  position: relative;
-  width: 160px;
-  height: 110px;
-  margin: 0 auto 8px;
-}
-.agent-orbit svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #a08b98;
-  stroke-width: 0.8;
-}
-.agent-orbit .orbit-dot {
-  fill: var(--yellow);
-  stroke: none;
-}
-.agent-orbit span {
-  position: absolute;
-  top: 29px;
-  left: 59px;
-  font-size: 46px;
-  font-weight: 400;
-  color: var(--yellow);
-  line-height: 1;
 }
 .agent-intro h2 {
   font-family: var(--serif);
@@ -950,8 +748,7 @@ main {
   color: var(--ink);
   outline-offset: 5px;
 }
-.amount-field select,
-.plain-select {
+.amount-field select {
   background: none;
   border: 0;
   font-size: 12px;
@@ -1003,7 +800,6 @@ main {
 }
 .route-amount small {
   display: block;
-  font-size: 12px;
   color: var(--muted);
   margin-top: 7px;
 }
@@ -1100,14 +896,12 @@ main {
   margin: 0 0 7px;
 }
 .audit-row p {
-  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
   margin: 0;
 }
 .audit-row time {
   margin-left: auto;
-  font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -1259,11 +1053,6 @@ dialog::backdrop {
 .sample-link {
   font-size: 11px;
 }
-.profile-name {
-  font-family: var(--serif);
-  font-size: 35px;
-  margin-top: 0;
-}
 .success-icon {
   font-size: 36px;
   color: var(--green);
@@ -1316,15 +1105,6 @@ dialog::backdrop {
   .agent-intro {
     margin-top: 35px;
   }
-  .agent-orbit {
-    width: 180px;
-    height: 125px;
-    margin-bottom: 12px;
-  }
-  .agent-orbit span {
-    top: 37px;
-    left: 69px;
-  }
   .agent-intro h2 {
     font-size: 52px;
   }
@@ -1337,31 +1117,12 @@ dialog::backdrop {
   .agent-message p {
     font-size: 13px;
   }
-  .hero {
-    margin-bottom: 35px;
-  }
-  .hero h1 {
-    font-size: 80px;
-  }
   .travel-art {
     width: 220px;
     height: 205px;
   }
-  .balance-layout {
-    padding-bottom: 30px;
-  }
-  .total-balance {
-    font-size: 58px;
-  }
-  .currency-row {
-    padding: 10px 0;
-  }
   .chart {
     height: 185px;
-  }
-  .tuition-strip {
-    padding: 25px;
-    margin-top: 27px;
   }
   .transaction {
     padding: 15px 0;
@@ -1387,9 +1148,6 @@ dialog::backdrop {
   .header-end {
     gap: 14px;
   }
-  .hero h1 {
-    font-size: 54px;
-  }
   .travel-art {
     width: 135px;
     height: 155px;
@@ -1400,22 +1158,6 @@ dialog::backdrop {
   }
   .agent-intro h2 {
     font-size: 40px;
-  }
-  .balance-layout {
-    gap: 25px;
-  }
-  .total-balance {
-    font-size: 43px;
-  }
-  .currency-ledger {
-    padding-left: 20px;
-  }
-  .tuition-strip {
-    gap: 13px;
-    padding: 18px 16px;
-  }
-  .tuition-copy p {
-    max-width: 200px;
   }
   .dark-button {
     padding: 11px 14px;
@@ -1456,9 +1198,6 @@ dialog::backdrop {
   main {
     padding: 30px 40px;
   }
-  .hero h1 {
-    font-size: 68px;
-  }
   .travel-art {
     width: 180px;
     height: 180px;
@@ -1483,20 +1222,6 @@ dialog::backdrop {
   .agent-intro h2 {
     font-size: 43px;
   }
-  .agent-orbit {
-    width: 125px;
-    height: 85px;
-    position: absolute;
-    right: 30px;
-    top: 90px;
-    opacity: 0.2;
-    pointer-events: none;
-  }
-  .agent-orbit span {
-    top: 22px;
-    left: 44px;
-    font-size: 35px;
-  }
   .conversation {
     margin: 0;
     max-height: 230px;
@@ -1504,17 +1229,8 @@ dialog::backdrop {
   .agent-bottom {
     padding-top: 0;
   }
-  .total-balance {
-    font-size: 52px;
-  }
-  .currency-row strong {
-    font-size: 14px;
-  }
   .chart {
     height: 175px;
-  }
-  .tuition-copy p {
-    max-width: none;
   }
 }
 @media (max-width: 600px) {
@@ -1566,18 +1282,6 @@ dialog::backdrop {
   .greeting {
     font-size: 11px;
   }
-  .hero {
-    gap: 0;
-    margin-bottom: 29px;
-  }
-  .hero h1 {
-    font-size: 49px;
-    letter-spacing: -2px;
-  }
-  .hero p {
-    font-size: 11px;
-    max-width: 230px;
-  }
   .travel-art {
     position: absolute;
     right: 0;
@@ -1595,49 +1299,11 @@ dialog::backdrop {
     font-size: 18px;
     right: -3px;
   }
-  .hero h1 {
-    position: relative;
-    z-index: 1;
-  }
-  .balance-layout {
-    grid-template-columns: 1fr;
-    gap: 17px;
-    padding-bottom: 20px;
-  }
-  .total-balance {
-    font-size: 48px;
-    margin-bottom: 8px;
-  }
-  .currency-ledger {
-    border: 0;
-    border-top: 1px solid var(--line);
-    padding: 14px 0 0;
-    display: flex;
-    gap: 12px;
-    justify-content: space-between;
-  }
-  .currency-row {
-    padding: 0;
-    display: grid;
-    grid-template-columns: 22px 1fr;
-    gap: 5px 6px;
-    align-items: center;
-  }
   .currency-icon {
     width: 22px;
     height: 22px;
     grid-row: 1/3;
     font-size: 13px;
-  }
-  .currency-name {
-    font-size: 9px;
-  }
-  .currency-row strong {
-    font-size: 11px;
-    margin: 0;
-  }
-  .currency-row strong small {
-    display: none;
   }
   .section-head h2 {
     font-size: 14px;
@@ -1658,28 +1324,6 @@ dialog::backdrop {
   }
   .legend {
     font-size: 8px;
-  }
-  .forecast-note {
-    font-size: 12px;
-  }
-  .tuition-strip {
-    padding: 18px 16px;
-    flex-wrap: wrap;
-    gap: 13px;
-  }
-  .tuition-copy {
-    min-width: 180px;
-  }
-  .tuition-copy h3 {
-    font-size: 12px;
-  }
-  .tuition-copy p {
-    font-size: 10px;
-  }
-  .tuition-strip .dark-button {
-    margin-left: 50px;
-    width: calc(100% - 50px);
-    justify-content: space-between;
   }
   .transaction-date {
     display: none;
@@ -1709,18 +1353,6 @@ dialog::backdrop {
   }
   .agent-intro p {
     font-size: 12px;
-  }
-  .agent-orbit {
-    width: 160px;
-    height: 110px;
-    right: 25px;
-    top: 80px;
-    opacity: 1;
-  }
-  .agent-orbit span {
-    top: 29px;
-    left: 59px;
-    font-size: 46px;
   }
   .conversation {
     margin: 26px 0 20px;
@@ -1846,16 +1478,6 @@ dialog::backdrop {
   .agent-intro {
     margin-top: 16px;
   }
-  .agent-orbit {
-    width: 120px;
-    height: 80px;
-    margin-bottom: 9px;
-  }
-  .agent-orbit span {
-    top: 21px;
-    left: 44px;
-    font-size: 34px;
-  }
   .agent-intro h2 {
     font-size: 40px;
     margin-bottom: 12px;
@@ -1886,9 +1508,6 @@ dialog::backdrop {
 }
 
 @media (max-width: 600px) {
-  .hero {
-    display: block;
-  }
   .travel-art {
     position: relative;
     top: auto;
@@ -1910,13 +1529,6 @@ dialog::backdrop {
   }
   .chart text {
     font-size: 15px;
-  }
-  .chart .chart-note {
-    font-size: 13px;
-  }
-  .chart .note-bg {
-    width: 126px;
-    x: 490;
   }
 }
 .invoice-ledger {
@@ -2165,20 +1777,12 @@ textarea {
   white-space: normal;
   text-align: left;
 }
-.loading-button {
-  opacity: 0.6;
-  pointer-events: none;
-}
 @media (max-width: 600px) {
   .navigation {
     gap: 9px;
   }
   .nav-link {
     font-size: 10px;
-  }
-  .nav-arrow {
-    font-size: 12px;
-    margin-left: 0;
   }
   .invoice-ledger {
     align-items: flex-start;
@@ -2378,9 +1982,6 @@ textarea {
   color: var(--green);
   line-height: 1.8;
   margin: 0;
-}
-.funding-demo-link {
-  margin-top: 18px;
 }
 .funding-section .ineligible {
   opacity: 0.65;
@@ -2669,70 +2270,11 @@ textarea {
     gap: 16px;
   }
 }
-.student-location {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  color: var(--muted);
-  font-size: 11px;
-  margin: 17px 0 30px;
-}
-.student-location > span {
-  overflow-wrap: anywhere;
-}
-.decision-hero {
-  padding: 8px 0 32px;
-  border-bottom: 1px solid var(--line);
-}
-.decision-hero h1 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 58px;
-  line-height: 1.08;
-  letter-spacing: -1.8px;
-  max-width: 720px;
-  margin: 19px 0;
-}
-.decision-arrow {
-  color: #ab7d65;
-  display: inline-block;
-  font-size: 46px;
-  margin-left: 17px;
-}
-.decision-hero > p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
-  max-width: 630px;
-  margin: 0 0 25px;
-}
 .decision-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 19px;
-}
-.semester-at-a-glance {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 29px;
-}
-.semester-at-a-glance strong {
-  font-size: 30px;
-  font-weight: 400;
-  letter-spacing: -1px;
-  display: block;
-  margin-top: 9px;
-}
-.semester-at-a-glance p {
-  font-size: 10px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin: 7px 0 0;
 }
 .home-agenda {
   border-top: 1px solid var(--line);
@@ -2955,47 +2497,11 @@ textarea {
 .student-setup-form .error {
   color: #a33939;
 }
-.student-location .text-button {
-  white-space: nowrap;
-}
 @media (max-width: 600px) {
-  .student-location {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 10px;
-    margin: 15px 0 24px;
-  }
-  .decision-hero h1 {
-    font-size: 44px;
-    letter-spacing: -1.4px;
-    overflow-wrap: anywhere;
-  }
-  .decision-arrow {
-    font-size: 33px;
-    margin-left: 10px;
-  }
-  .decision-hero > p {
-    font-size: 12px;
-    line-height: 1.8;
-  }
   .decision-actions {
     align-items: stretch;
     flex-direction: column;
     gap: 14px;
-  }
-  .semester-at-a-glance {
-    gap: 10px;
-  }
-  .semester-at-a-glance .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.5px;
-  }
-  .semester-at-a-glance strong {
-    font-size: 25px;
-  }
-  .semester-at-a-glance p {
-    font-size: 9px;
   }
   .semester-action {
     grid-template-columns: 33px minmax(0, 1fr) 20px;
@@ -3415,9 +2921,6 @@ main {
 }
 .assistant-toggle > span {
   font-size: 19px;
-}
-.mobile-assistant {
-  display: none;
 }
 .welcome-row {
   margin-bottom: 18px;
@@ -4015,7 +3518,6 @@ main {
   font-size: 13px;
 }
 #assistant-dialog .agent-footnote {
-  font-size: 12px;
   line-height: 1.6;
   gap: 5px;
   align-items: center;
@@ -4451,25 +3953,6 @@ textarea {
   .receipt-row {
     font-size: 11px;
   }
-  .mobile-assistant {
-    display: flex;
-    gap: 9px;
-    align-items: center;
-    position: fixed;
-    bottom: 17px;
-    right: 19px;
-    z-index: 7;
-    background: var(--plum);
-    color: var(--paper);
-    font-size: 12px;
-    padding: 12px 17px;
-    min-height: 44px;
-    border-radius: 28px;
-    box-shadow: 0 4px 18px #21101f22;
-  }
-  .mobile-assistant > span {
-    font-size: 18px;
-  }
   #assistant-dialog {
     width: 100%;
     max-width: 100vw;
@@ -4517,9 +4000,6 @@ textarea {
   .topbar {
     position: sticky;
     top: 0;
-  }
-  .mobile-assistant {
-    display: none;
   }
 }
 

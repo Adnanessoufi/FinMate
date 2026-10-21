@@ -1,7 +1,6 @@
 import { checkInvoice, guardianDefaults, invoiceSnapshot, referenceKey } from './guardian.mjs'
 import { fail, appendAudit } from './store.mjs'
 import { validAmount, validCurrency, isoDay } from './engine.mjs'
-import { pathToFileURL } from 'node:url'
 import { randomUUID } from 'node:crypto'
 
 export function extractInvoice(text) {
@@ -137,14 +136,11 @@ export async function pdfText(bytes) {
   try {
     pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs')
   } catch {
-    if (process.env.FINMATE_PDFJS_PATH)
-      pdfjs = await import(pathToFileURL(process.env.FINMATE_PDFJS_PATH))
-    else
-      fail(
-        'PDF_UNAVAILABLE',
-        'PDF support is not installed. Run npm install, or paste the invoice text.',
-        503
-      )
+    fail(
+      'PDF_UNAVAILABLE',
+      'PDF support is unavailable. Paste the invoice text or try again later.',
+      503
+    )
   }
   const task = pdfjs.getDocument({
     data: new Uint8Array(bytes),

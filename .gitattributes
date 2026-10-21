@@ -6,7 +6,3 @@
 *.css text eol=lf
 *.html text eol=lf
 *.pdf binary
-*.pptx binary
-*.png binary
-*.mp4 binary
-*.webm binary

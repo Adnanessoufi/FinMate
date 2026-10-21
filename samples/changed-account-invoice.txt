@@ -1,8 +1,0 @@
-SYNTHETIC TUITION INVOICE — consistency-check example
-Recipient: University of Amsterdam
-Account: DEMO-UVA-CHANGED-002
-Reference: UVA-2026-CHANGED-02
-Amount due: EUR 2300.00
-Currency: EUR
-Due date: 2026-11-01
-This altered-account fixture is for local testing only.

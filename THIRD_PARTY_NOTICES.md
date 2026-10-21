@@ -2,7 +2,7 @@
 
 The example names, invoices and financial records in FinMate are synthetic. No bank or transfer provider is connected.
 
-- PDF.js / pdfjs-dist 6.2.108, Mozilla and contributors, Apache License 2.0. Upstream: https://github.com/mozilla/pdf.js . License included at docs/licenses/pdfjs-Apache-2.0.txt. The pinned version replaces 5.6.205 after review of GHSA-hq66-cqwq-w95j (CVE-2026-16633). Invoice extraction disables scripting and expression evaluation. The npm lockfile records the installed dependency tree.
+- PDF.js / pdfjs-dist 6.2.108, Mozilla and contributors, Apache License 2.0. Upstream: https://github.com/mozilla/pdf.js . License included at docs/licenses/pdfjs-Apache-2.0.txt. Invoice extraction disables scripting and expression evaluation. The npm lockfile records the installed dependency tree.
 - Optional @napi-rs/canvas dependency supplied through PDF.js, MIT license, upstream https://github.com/Brooooooklyn/canvas . Its dependency license is included at docs/licenses/canvas-MIT.txt. Platform packages and licenses are recorded in the lockfile and npm distribution.
 - node-postgres / pg 8.23.1 and its dependency tree, used for hosted PostgreSQL access. Upstream: https://github.com/brianc/node-postgres . The driver is MIT licensed; its license is included at docs/licenses/pg-MIT.txt. Individual dependency licenses are retained in npm packages and recorded in the lockfile.
 - PGlite 0.5.11, Apache License 2.0, used only as a development dependency for PostgreSQL tests. Upstream: https://github.com/electric-sql/pglite . License included at docs/licenses/pglite-Apache-2.0.txt.

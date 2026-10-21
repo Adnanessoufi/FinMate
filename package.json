@@ -7,7 +7,6 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "node server.mjs",
     "start": "node server.mjs",
     "test": "node --experimental-test-isolation=none --test tests/*.test.mjs"
   },

@@ -56,7 +56,6 @@ const assets = new Map([
   ['/styles.css', 'styles.css'],
   ['/favicon.svg', 'favicon.svg'],
   ['/sample-statement.csv', 'sample-statement.csv'],
-  ['/samples/changed-account-invoice.txt', 'samples/changed-account-invoice.txt'],
   ['/samples/tuition-invoice.txt', 'samples/tuition-invoice.txt'],
   ['/samples/tuition-invoice.pdf', 'samples/tuition-invoice.pdf'],
 ])
@@ -372,7 +371,7 @@ export async function createApp({
       if (url.pathname === '/api/agent') {
         await consume('agent', clientAddress)
         if (hosted) await store.consumeLimit('agent-day', 'site', dailyAgentLimit, 86400)
-        if (agentBusy.size >= 2) fail('AGENT_BUSY', 'The local agent is busy. Retry shortly.', 429)
+        if (agentBusy.size >= 2) fail('AGENT_BUSY', 'The agent is busy. Retry shortly.', 429)
         if (agentBusy.has(sessionId))
           fail('AGENT_BUSY', 'Wait for the current agent task to finish.', 429)
         agentBusy.add(sessionId)

@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 .git
+public/
 .qa
 .presentation-build
 .npm-cache

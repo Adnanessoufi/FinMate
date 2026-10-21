@@ -2,24 +2,15 @@
 
 [Open FinMate](https://finmate-omega.vercel.app)
 
-I made FinMate to help international students manage tuition, living costs and money from home.
+I made FinMate to help international students manage tuition and living costs abroad.
 
-The student enters their balances and uploads a tuition invoice. FinMate compares payment options and keeps money aside for living costs. The student reviews the payment and confirms it with a PIN.
+Enter your balances, upload a tuition invoice and compare payment options. FinMate checks fees and arrival dates while protecting your living budget. You review the payment and confirm it with a PIN.
 
 Accounts and payments are simulated. No real bank is connected.
 
-## What it does
-
-- Manage EUR, GBP and CNY balances
-- Read PDF and TXT invoices
-- Compare fees and arrival dates, including funding from selected accounts
-- Check purchase affordability and upcoming expenses
-- Explain plans in English or Chinese
-- Save payment approvals, receipts and audit history
-
 ## Run it
 
-You need Node.js 22.18 or newer in the 22.x release line.
+Use Node.js 22.18 or newer in the 22.x release line.
 
 ```bash
 npm ci --ignore-scripts
@@ -27,25 +18,23 @@ cp .env.example .env
 npm start
 ```
 
-On PowerShell, use `Copy-Item .env.example .env` to copy the file.
+On PowerShell, use `Copy-Item .env.example .env`.
 
 Open http://127.0.0.1:5187.
 
-Add your OpenAI key to `.env` and choose the model with `FINMATE_MODEL`. Restart the server after changing these settings. Without a key, the app uses its offline planner. It also labels offline responses when the provider is unavailable.
+For live chat, add `OPENAI_API_KEY` and choose `FINMATE_MODEL` in `.env`, then restart. Without a working key, the app labels its responses as coming from the offline planner.
 
-## Host on Vercel
+## Deploy on Vercel
 
-Import this repository into Vercel. The included configuration builds the public files and runs the API as one function.
+Import this repository and connect a PostgreSQL database. Set these server-side variables:
 
-Connect a PostgreSQL database and set these server-side environment variables:
+- `DATABASE_URL`: the pooled database connection URL
+- `FINMATE_STORAGE_KEY`: a fixed 64-character hexadecimal encryption key
+- `OPENAI_API_KEY` and `FINMATE_MODEL`: optional live chat settings
 
-- `DATABASE_URL`: the database's pooled connection URL, with TLS enabled
-- `FINMATE_STORAGE_KEY`: a fixed 64-character hexadecimal key, stored separately from the database
-- `OPENAI_API_KEY` and `FINMATE_MODEL`: optional live agent settings
+The included configuration builds the public files and deploys the API. For a custom domain, set `FINMATE_PUBLIC_ORIGIN` to its exact HTTPS origin. Redeploy after changing variables.
 
-Vercel's deployment domains are allowed automatically. For a custom domain, set `FINMATE_PUBLIC_ORIGIN` to its exact HTTPS origin. Never put keys in browser code. Redeploy after changing environment variables.
-
-The hosted app starts separate sandbox sessions for visitors. Cookies use HTTPS, and database version checks prevent concurrent requests from overwriting payments. Request limits are shared across function instances. Hosted chat allows 100 agent requests per 24-hour window by default; change this with `FINMATE_DAILY_AGENT_LIMIT`. This is still a simulated account app without a user login; use synthetic data for public demonstrations.
+Hosted chat allows 100 agent requests per 24-hour window by default. Change this with `FINMATE_DAILY_AGENT_LIMIT`.
 
 ## Tests
 
@@ -53,12 +42,16 @@ The hosted app starts separate sandbox sessions for visitors. Cookies use HTTPS,
 npm test
 ```
 
-## Built with
+The tests cover payment approvals, invoice checks, account isolation and failed requests. They also check that concurrent requests cannot duplicate payments or deposits.
 
-HTML, CSS, JavaScript and Node.js. PDF.js reads invoices, OpenAI handles the agent conversation, and the ECB feed provides reference exchange rates. Payment quotes use separate simulated rates.
+## Data and permissions
 
-The agent can read finances and prepare drafts. Approval requires the student's PIN. Starting balances are entered manually, and expected income is not available money until it arrives.
+The agent can read finances and prepare payment drafts. Approval requires your PIN. Expected income does not count as available funds, and importing a statement does not change balances.
 
-Local accounts are encrypted in `data/`. On Vercel, encrypted sessions are stored in PostgreSQL. Keep the storage key to retain access to them. API keys and saved accounts stay outside Git. Live chat sends messages and financial tool results to the configured model provider; invoice extraction stays local.
+Local sessions are encrypted in `data/`. Hosted sessions are encrypted in PostgreSQL. Keep the storage key separately; losing it makes the saved data unreadable. Keys and account data stay outside Git.
+
+Live chat sends messages and financial tool results to the configured model provider. Invoice text extraction runs on the server. The public app has no user login, so use synthetic data when trying it.
+
+Built with HTML, CSS, JavaScript and Node.js. PDF.js reads invoices. ECB reference rates are informational; payment quotes use simulated rates.
 
 Third-party licenses are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

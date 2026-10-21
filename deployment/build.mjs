@@ -10,7 +10,6 @@ const assets = [
   'sample-statement.csv',
   'samples/tuition-invoice.pdf',
   'samples/tuition-invoice.txt',
-  'samples/changed-account-invoice.txt',
 ]
 
 for (const asset of assets) {
