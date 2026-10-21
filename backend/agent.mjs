@@ -258,7 +258,7 @@ async function runAgentOnce(
   if (config.mode === 'live') {
     const base = process.env.FINMATE_BASE_URL || 'https://api.openai.com/v1'
     const key = process.env.FINMATE_API_KEY || process.env.OPENAI_API_KEY
-    const history = store.sessions[id].state.chat.slice(-8)
+    const history = (await store.get(id)).state.chat.slice(-8)
     const messages = [
       {
         role: 'system',

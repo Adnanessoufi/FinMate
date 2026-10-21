@@ -17,7 +17,7 @@ Accounts and payments are simulated. No real bank is connected.
 
 ## Run it
 
-You need Node.js 22.18 or newer.
+You need Node.js 22.18 or newer in the 22.x release line.
 
 ```bash
 npm ci --ignore-scripts
@@ -31,6 +31,20 @@ Open http://127.0.0.1:5187.
 
 Add your OpenAI key to `.env` and choose the model with `FINMATE_MODEL`. Restart the server after changing these settings. Without a key, the app uses its offline planner. It also labels offline responses when the provider is unavailable.
 
+## Host on Vercel
+
+Import this repository into Vercel. The included configuration builds the public files and runs the API as one function.
+
+Connect a PostgreSQL database and set these server-side environment variables:
+
+- `DATABASE_URL`: the database's pooled connection URL, with TLS enabled
+- `FINMATE_STORAGE_KEY`: a fixed 64-character hexadecimal key, stored separately from the database
+- `OPENAI_API_KEY` and `FINMATE_MODEL`: optional live agent settings
+
+Vercel's deployment domains are allowed automatically. For a custom domain, set `FINMATE_PUBLIC_ORIGIN` to its exact HTTPS origin. Never put keys in browser code. Redeploy after changing environment variables.
+
+The hosted app starts separate sandbox sessions for visitors. Cookies use HTTPS, and database version checks prevent concurrent requests from overwriting payments. Request limits are shared across function instances. Hosted chat allows 100 agent requests per 24-hour window by default; change this with `FINMATE_DAILY_AGENT_LIMIT`. This is still a simulated account app without a user login; use synthetic data for public demonstrations.
+
 ## Tests
 
 ```bash
@@ -43,6 +57,6 @@ HTML, CSS, JavaScript and Node.js. PDF.js reads invoices, OpenAI handles the age
 
 The agent can read finances and prepare drafts. Approval requires the student's PIN. Starting balances are entered manually, and expected income is not available money until it arrives.
 
-Saved accounts are encrypted in `data/`. Keep the storage key to retain access to them. API keys and saved accounts stay outside Git. Live chat sends messages and financial tool results to the configured model provider; invoice extraction stays local.
+Local accounts are encrypted in `data/`. On Vercel, encrypted sessions are stored in PostgreSQL. Keep the storage key to retain access to them. API keys and saved accounts stay outside Git. Live chat sends messages and financial tool results to the configured model provider; invoice extraction stays local.
 
 Third-party licenses are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

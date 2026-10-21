@@ -167,6 +167,19 @@ const routeKeys = new Map(
 async function body(req) {
   if (!/^application\/json(?:\s*;\s*charset=utf-8)?$/i.test(req.headers['content-type'] || ''))
     fail('CONTENT_TYPE', 'Send UTF-8 JSON.', 415)
+  if (Number(req.headers['content-length']) > 1600000)
+    fail('BODY_LIMIT', 'The upload is too large.', 413)
+  if (req.body !== undefined) {
+    let input
+    try {
+      input = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+    } catch {
+      fail('JSON', 'Invalid UTF-8 JSON.')
+    }
+    if (Buffer.byteLength(JSON.stringify(input)) > 1600000)
+      fail('BODY_LIMIT', 'The upload is too large.', 413)
+    return validateJsonObject(input)
+  }
   const chunks = []
   let length = 0
   for await (const chunk of req) {
@@ -187,8 +200,24 @@ export async function createApp({
   path = resolve(root, 'data/sessions.json'),
   storageKey = process.env.FINMATE_STORAGE_KEY,
   rateLimits = {},
+  store: suppliedStore,
+  publicOrigins = [],
+  hosted = false,
 } = {}) {
-  const store = await new Store(path, { storageKey }).init()
+  const store = suppliedStore || (await new Store(path, { storageKey }).init())
+  if (hosted && !publicOrigins.length)
+    fail('HOST_CONFIG', 'A public HTTPS origin is required for hosted requests.', 500)
+  for (const origin of publicOrigins) {
+    const parsed = new URL(origin)
+    if (parsed.protocol !== 'https:' || parsed.origin !== origin)
+      fail('HOST_CONFIG', 'Public origins must be exact HTTPS origins.', 500)
+  }
+  const dailyAgentLimit = Number(process.env.FINMATE_DAILY_AGENT_LIMIT || 100)
+  if (
+    hosted &&
+    (!Number.isSafeInteger(dailyAgentLimit) || dailyAgentLimit < 1 || dailyAgentLimit > 10000)
+  )
+    fail('HOST_CONFIG', 'The daily agent limit must be between 1 and 10000.', 500)
   const agentBusy = new Set()
   const limits = {
     api: new RateLimiter({ limit: rateLimits.api ?? 300 }),
@@ -196,25 +225,37 @@ export async function createApp({
     pin: new RateLimiter({ limit: rateLimits.pin ?? 15 }),
     bootstrap: new RateLimiter({ limit: rateLimits.bootstrap ?? 30 }),
   }
-  const server = http.createServer(async (req, res) => {
+  const consume = async (scope, identity) => {
+    if (hosted) return store.consumeLimit(scope, identity, rateLimits[scope] ?? limits[scope].limit)
+    limits[scope].consume(identity)
+  }
+  const handler = async (req, res) => {
     res.setHeader('X-Frame-Options', 'DENY')
     res.setHeader('Referrer-Policy', 'no-referrer')
     res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()')
     res.setHeader('Cross-Origin-Opener-Policy', 'same-origin')
     res.setHeader('X-Content-Type-Options', 'nosniff')
     const address = server.address()
-    const allowedHosts = [`127.0.0.1:${address.port}`, `localhost:${address.port}`]
+    const allowedHosts = hosted
+      ? publicOrigins.map(origin => new URL(origin).host)
+      : [`127.0.0.1:${address.port}`, `localhost:${address.port}`]
+    const requestOrigin = `${hosted ? 'https' : 'http'}://${req.headers.host}`
+    const clientAddress = hosted
+      ? req.headers['x-vercel-forwarded-for'] ||
+        req.headers['x-forwarded-for'] ||
+        req.socket.remoteAddress
+      : req.socket.remoteAddress
     if (!allowedHosts.includes(req.headers.host)) {
-      json(res, 403, { error: 'Local host required.', code: 'HOST' })
+      json(res, 403, { error: 'Unexpected request host.', code: 'HOST' })
       return
     }
     let sessionId
     try {
-      const url = new URL(req.url, `http://${req.headers.host}`)
+      const url = new URL(req.url, requestOrigin)
       if (url.pathname.startsWith('/api/')) {
         if (req.headers['sec-fetch-site'] === 'cross-site')
           fail('CROSS_SITE', 'Cross-site financial requests are blocked.', 403)
-        limits.api.consume(req.socket.remoteAddress)
+        await consume('api', clientAddress)
       }
 
       if (!url.pathname.startsWith('/api/')) {
@@ -234,15 +275,15 @@ export async function createApp({
       }
       sessionId = req.headers.cookie?.match(/(?:^|;\s*)finmate_session=([a-f0-9]{64})(?:;|$)/)?.[1]
       if (url.pathname === '/api/bootstrap' && req.method === 'GET') {
-        limits.bootstrap.consume(req.socket.remoteAddress)
-        let session = store.sessions[sessionId]
+        await consume('bootstrap', clientAddress)
+        let session = await store.get(sessionId)
         if (!session) {
           const created = await store.create()
           sessionId = created.id
           session = created.session
           res.setHeader(
             'Set-Cookie',
-            `finmate_session=${sessionId}; HttpOnly; SameSite=Strict; Path=/; Max-Age=2592000`
+            `finmate_session=${sessionId}; HttpOnly; SameSite=Strict; Path=/; Max-Age=2592000${hosted ? '; Secure' : ''}`
           )
         }
         if (!verifyAudit(session.state.audit))
@@ -255,7 +296,7 @@ export async function createApp({
         })
         return
       }
-      const session = store.sessions[sessionId]
+      const session = await store.get(sessionId)
       if (!session) fail('SESSION', 'Reload to create your demo session.', 401)
       if (!verifyAudit(session.state.audit))
         fail('AUDIT_INTEGRITY', 'Audit integrity failed. Account operations are blocked.', 409)
@@ -317,7 +358,7 @@ export async function createApp({
       }
       if (req.method !== 'POST') fail('METHOD', 'Use GET or POST.', 405)
       if (
-        req.headers.origin !== `http://${req.headers.host}` ||
+        req.headers.origin !== requestOrigin ||
         !safeEqual(req.headers['x-finmate-csrf'], session.csrf)
       )
         fail('CSRF', 'This request is missing a matching session and origin.', 403)
@@ -326,10 +367,11 @@ export async function createApp({
       if (allowed && Object.keys(input).some(k => !allowed.includes(k)))
         fail('INPUT_KEYS', 'Unexpected request fields.')
       if (['/api/approve', '/api/security/pin'].includes(url.pathname))
-        limits.pin.consume(sessionId)
+        await consume('pin', sessionId)
 
       if (url.pathname === '/api/agent') {
-        limits.agent.consume(req.socket.remoteAddress)
+        await consume('agent', clientAddress)
+        if (hosted) await store.consumeLimit('agent-day', 'site', dailyAgentLimit, 86400)
         if (agentBusy.size >= 2) fail('AGENT_BUSY', 'The local agent is busy. Retry shortly.', 429)
         if (agentBusy.has(sessionId))
           fail('AGENT_BUSY', 'Wait for the current agent task to finish.', 429)
@@ -338,7 +380,7 @@ export async function createApp({
           const result = await runAgent(store, sessionId, input.message, {
             language: input.language,
           })
-          json(res, 200, { ...result, state: publicState(store.sessions[sessionId].state) })
+          json(res, 200, { ...result, state: publicState((await store.get(sessionId)).state) })
         } finally {
           agentBusy.delete(sessionId)
         }
@@ -573,8 +615,9 @@ export async function createApp({
         code: error.code || 'SERVER',
       })
     }
-  })
-  return { server, store }
+  }
+  const server = http.createServer(handler)
+  return { server, store, handler }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.18.0"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "node server.mjs",
@@ -12,6 +12,10 @@
     "test": "node --experimental-test-isolation=none --test tests/*.test.mjs"
   },
   "dependencies": {
-    "pdfjs-dist": "6.2.108"
+    "pdfjs-dist": "6.2.108",
+    "pg": "8.23.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.11"
   }
 }

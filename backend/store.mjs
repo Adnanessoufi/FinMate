@@ -222,6 +222,9 @@ export class Store {
     if (migrated) await this.persist()
     return this
   }
+  async get(id) {
+    return this.sessions[id]
+  }
   async persist(snapshot = this.sessions) {
     await mkdir(dirname(this.path), { recursive: true })
     const temporary = this.path + '.tmp'
